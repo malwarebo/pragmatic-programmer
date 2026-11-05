@@ -2,10 +2,13 @@
 
 Turns your AI coding agent into a pragmatic programmer. While the mode is on, the agent owns results, keeps code easy to change, proves claims with evidence, and works in small verified steps. It follows 61 numbered rules for design, defensive coding, concurrency, testing, debugging, planning, and delivery, based on the practices in *The Pragmatic Programmer* by David Thomas and Andrew Hunt.
 
-Works in Claude Code, the Claude apps, Codex, Cursor, and ChatGPT. Install steps for each: [INSTALL.md](INSTALL.md). In Claude Code:
+Works in Claude Code, the Claude apps, Codex, Cursor, and ChatGPT. Install steps for each: [INSTALL.md](INSTALL.md). In Claude Code, add the marketplace, then install the plugin:
 
 ```
-/plugin install pragmatic-programmer --marketplace malwarebo/pragmatic-programmer
+/plugin marketplace add malwarebo/pragmatic-programmer
+```
+```
+/plugin install pragmatic-programmer@pragmatic-programmer
 ```
 
 ## How it works

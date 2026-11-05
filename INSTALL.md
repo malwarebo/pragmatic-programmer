@@ -13,11 +13,16 @@ The Claude apps and ChatGPT install from ZIPs. To build them, run `npm run packa
 
 ## Claude Code
 
+Add the marketplace, then install the plugin. Send these as two separate prompts:
+
 ```
-/plugin install pragmatic-programmer --marketplace malwarebo/pragmatic-programmer
+/plugin marketplace add malwarebo/pragmatic-programmer
+```
+```
+/plugin install pragmatic-programmer@pragmatic-programmer
 ```
 
-On Claude Code older than 2.1.275, send two separate prompts instead: `/plugin marketplace add malwarebo/pragmatic-programmer`, then `/plugin install pragmatic-programmer@pragmatic-programmer`. To install from a local clone, use the clone's path in place of `malwarebo/pragmatic-programmer`. Start a new session after installing. The ruleset loads at session start, so you do not need to type anything to turn it on.
+To install from a local clone, use the clone's path in place of `malwarebo/pragmatic-programmer` in the first command. Start a new session after installing. The ruleset loads at session start, so you do not need to type anything to turn it on.
 
 ## Claude apps
 
