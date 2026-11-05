@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "pragmatic-programmer",
+  "description": "Pragmatic programmer mode for AI coding agents.",
+  "owner": {
+    "name": "malwarebo",
+    "url": "https://github.com/malwarebo"
+  },
+  "plugins": [
+    {
+      "name": "pragmatic-programmer",
+      "description": "Pragmatic programmer mode and a rule-based code review.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}

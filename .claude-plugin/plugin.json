@@ -1,0 +1,12 @@
+{
+  "name": "pragmatic-programmer",
+  "version": "1.0.0",
+  "description": "Pragmatic programmer mode: the agent owns results, keeps code easy to change, proves claims with evidence, and works in small verified steps.",
+  "author": {
+    "name": "malwarebo",
+    "url": "https://github.com/malwarebo"
+  },
+  "homepage": "https://github.com/malwarebo/pragmatic-programmer",
+  "repository": "https://github.com/malwarebo/pragmatic-programmer",
+  "keywords": ["pragmatic-programmer", "code-quality", "code-review", "debugging", "testing"]
+}

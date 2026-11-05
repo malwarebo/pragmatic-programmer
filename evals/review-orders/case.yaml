@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: review-orders
+expected_outcome: |
+  A review of orders.py that finds the planted defects (SQL injection, hardcoded live key,
+  swallowed exception, mutable default argument, unclosed connection and file, duplicated
+  tax rate), reports each as a severity-ranked finding with a rule ID and a concrete fix,
+  and changes no code.
+context:
+  scaffold_script: place-files.sh

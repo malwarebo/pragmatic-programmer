@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: debug-discount
+expected_outcome: |
+  The discount applies at exactly $100 in pricing.py, the banner in notifications.py uses the
+  same shared rule, a boundary regression test exists and was seen failing before the fix,
+  the suite passes, and the final message uses the task report format and names the
+  customers already overcharged.
+context:
+  scaffold_script: place-files.sh

@@ -1,0 +1,21 @@
+{
+  "name": "pragmatic-programmer",
+  "interface": {
+    "displayName": "Pragmatic Programmer"
+  },
+  "plugins": [
+    {
+      "name": "pragmatic-programmer",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/malwarebo/pragmatic-programmer.git",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
