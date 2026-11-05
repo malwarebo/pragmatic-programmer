@@ -39,21 +39,6 @@ Hooks make these commands work across a whole session in Claude Code and Codex. 
 - Every task that changes code ends with a fixed report: `Result`, `Changes`, `Verified`, `Not verified`, `Follow-ups`.
 - Review findings come back one per line: `[high] orders.py:48 DEF-2: bare except hides every failure. Fix: catch requests.RequestException and re-raise with context.`
 
-## Repository layout
-
-```
-.claude-plugin/        Claude Code plugin and marketplace manifests
-.codex-plugin/         Codex plugin manifest
-.agents/plugins/       Codex marketplace
-.cursor/rules/         always-on Cursor rule (generated)
-skills/                the two skills
-hooks/                 session hooks for Claude Code and Codex
-scripts/build.js       generates every copy of the ruleset from the skill
-tests/                 hook, manifest, and repository checks
-evals/                 test cases for `claude plugin eval`
-AGENTS.md              always-on rules for Codex and other agents (generated)
-```
-
 ## Development
 
 | Task | Command |
