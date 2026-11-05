@@ -39,7 +39,8 @@ test('every skill has valid Agent Skills frontmatter', () => {
     assert.equal(fields.name, dir, `${dir}: name must match folder`);
     assert.match(fields.name, /^[a-z0-9]+(-[a-z0-9]+)*$/);
     assert.ok(fields.name.length <= 64);
-    assert.ok(fields.description.length > 0 && fields.description.length <= 1024, `${dir}: description length`);
+    // The Claude apps reject descriptions over 200 characters; the Agent Skills spec allows 1024.
+    assert.ok(fields.description.length > 0 && fields.description.length <= 200, `${dir}: description length`);
   }
 });
 

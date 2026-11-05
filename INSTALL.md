@@ -9,7 +9,14 @@
 | ChatGPT | Both skills, uploaded as ZIPs | [ChatGPT](#chatgpt) |
 | Any other agent | Always-on rules file | [Other agents](#other-agents) |
 
-The Claude apps and ChatGPT install from ZIPs. To build them, run `npm run package` in a clone of this repository. It writes `dist/pragmatic-programmer.zip` and `dist/pragmatic-review.zip` (requires `node` and `zip`).
+The Claude apps, Cursor, and ChatGPT install from a local clone. Clone the repository once:
+
+```bash
+git clone https://github.com/malwarebo/pragmatic-programmer.git
+cd pragmatic-programmer
+```
+
+The Claude apps and ChatGPT take ZIPs. Run `npm run package` in the clone to write `dist/pragmatic-programmer.zip` and `dist/pragmatic-review.zip` (requires `node` and `zip`).
 
 ## Claude Code
 
@@ -26,7 +33,9 @@ To install from a local clone, use the clone's path in place of `malwarebo/pragm
 
 ## Claude apps
 
-1. Under Settings > Capabilities, enable code execution. The newer layout calls it "Create and edit files".
+1. Turn on code execution:
+   - Free, Pro, Max, and Ultra: Settings > Capabilities > "Code execution and file creation" (called "Create and edit files" in the newer layout).
+   - Team and Enterprise: an owner turns on "Cloud code execution and file creation" in Organization settings > Plugins & skills, on the Policy tab.
 2. Open Customize > Skills, click `+`, then `+ Create skill`, then `Upload a skill`.
 3. Upload `dist/pragmatic-programmer.zip`, then repeat for `dist/pragmatic-review.zip`.
 
@@ -34,7 +43,7 @@ To use it, ask for the skill by name ("use pragmatic-programmer") or let Claude 
 
 ## Codex
 
-The Codex CLI needs plugin support: `codex plugin --help` must list plugin commands, so upgrade Codex if it doesn't.
+The Codex CLI needs plugin support. If `codex plugin --help` does not list `add`, `list`, `marketplace`, and `remove`, upgrade Codex (`npm install -g @openai/codex@latest`, or `brew upgrade codex` for a Homebrew install).
 
 ```bash
 codex plugin marketplace add malwarebo/pragmatic-programmer
@@ -45,7 +54,7 @@ Run `codex`, open `/hooks`, review and trust the three hooks, then start a new t
 
 ## Cursor
 
-Link both skills from a clone of this repository:
+From the root of the clone, link both skills:
 
 ```bash
 mkdir -p ~/.cursor/skills
@@ -86,8 +95,8 @@ The live mode is stored per project in the plugin's data directory, so sessions 
 
 | Platform | Command |
 |---|---|
-| Claude Code | `/plugin uninstall pragmatic-programmer@pragmatic-programmer` |
-| Codex | `codex plugin remove pragmatic-programmer` |
+| Claude Code | `/plugin uninstall pragmatic-programmer@pragmatic-programmer`, then `/plugin marketplace remove pragmatic-programmer` |
+| Codex | `codex plugin remove pragmatic-programmer@pragmatic-programmer`, then `codex plugin marketplace remove pragmatic-programmer` |
 | Cursor | `rm ~/.cursor/skills/pragmatic-programmer ~/.cursor/skills/pragmatic-review`, and delete any copied `.mdc` rule |
 | Claude apps, ChatGPT | Delete both skills from the Skills page |
 | Other agents | Delete the copied `AGENTS.md` text |

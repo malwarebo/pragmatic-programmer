@@ -1,6 +1,6 @@
 ---
 name: pragmatic-review
-description: One-shot code review against the pragmatic programmer rules. Checks security, resource handling, concurrency, correctness, tests, design, and naming, and ties each finding to a rule ID, a file and line, and a concrete fix. Use for "review this", "review my PR", "review the last commit", "is this ready to merge", or /pragmatic-review, whether or not pragmatic programmer mode is on.
+description: Code review against the pragmatic programmer rules. Each finding gets a severity, file and line, rule ID, and fix. Use for review this, review my PR or last commit, or /pragmatic-review.
 ---
 
 # Pragmatic Review

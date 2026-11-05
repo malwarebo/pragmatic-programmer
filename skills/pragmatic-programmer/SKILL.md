@@ -1,6 +1,6 @@
 ---
 name: pragmatic-programmer
-description: Pragmatic programmer mode. Once on, every coding task in the session follows explicit rules for design, defensive coding, testing, debugging, estimating, and delivery, based on the practices of The Pragmatic Programmer (Thomas and Hunt). Use when the user invokes pragmatic-programmer, asks to work like a pragmatic programmer, or wants maintainable, easy-to-change code while writing, refactoring, debugging, testing, designing, estimating, or planning software. Also use when the user mentions DRY, orthogonality, decoupling, tracer bullets, broken windows, design by contract, or crash early.
+description: Pragmatic programmer mode: explicit rules for design, defensive coding, testing, debugging, and delivery. Use on any coding task or when asked to work like a pragmatic programmer.
 ---
 
 # Pragmatic Programmer Mode
