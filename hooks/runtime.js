@@ -50,9 +50,12 @@ function writeDefaultMode(mode) {
   fs.writeFileSync(file, JSON.stringify({ ...readConfig(), defaultMode: mode }, null, 2) + '\n');
 }
 
-// Claude Code sets CLAUDE_PLUGIN_DATA and Codex sets PLUGIN_DATA; both survive plugin updates.
+// Copilot CLI sets COPILOT_PLUGIN_DATA and reads a different output shape (see emit).
+const isCopilot = Boolean(process.env.COPILOT_PLUGIN_DATA);
+
+// Claude Code sets CLAUDE_PLUGIN_DATA, Codex PLUGIN_DATA, Copilot COPILOT_PLUGIN_DATA; all survive updates.
 function stateDir() {
-  return process.env.CLAUDE_PLUGIN_DATA || process.env.PLUGIN_DATA ||
+  return process.env.CLAUDE_PLUGIN_DATA || process.env.PLUGIN_DATA || process.env.COPILOT_PLUGIN_DATA ||
     path.join(os.homedir(), '.pragmatic-programmer');
 }
 
@@ -110,6 +113,12 @@ function rules() {
 // Synchronous write: every hook exits right after emitting, and an async pipe write can be lost.
 function emit(event, context) {
   if (!context) return;
+  // Known limit: Copilot reads top-level additionalContext on sessionStart only, so on Copilot the
+  // on/off commands change the stored mode for the next session but send nothing to the current one.
+  if (isCopilot) {
+    if (event === 'SessionStart') fs.writeSync(1, JSON.stringify({ additionalContext: context }));
+    return;
+  }
   fs.writeSync(1, JSON.stringify({ hookSpecificOutput: { hookEventName: event, additionalContext: context } }));
 }
 

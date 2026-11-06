@@ -4,7 +4,7 @@ Turns your AI coding agent into a pragmatic programmer. While the mode is on, th
 
 ## Install
 
-Each tool installs differently. The `/plugin` commands work only in Claude Code. Full steps: [INSTALL.md](INSTALL.md).
+Each tool installs differently. The `/plugin` commands work in Claude Code and the GitHub Copilot CLI. Full steps: [INSTALL.md](INSTALL.md).
 
 | Tool | Install |
 |---|---|
@@ -13,7 +13,7 @@ Each tool installs differently. The `/plugin` commands work only in Claude Code.
 | Cursor | Link `skills/pragmatic-programmer` and `skills/pragmatic-review` into `~/.cursor/skills/`, or copy `.cursor/rules/pragmatic-programmer.mdc` into the project |
 | Claude apps | Upload the ZIPs from `npm run package` under Customize > Skills |
 | ChatGPT | Upload the ZIPs from `npm run package` under Plugins > Skills |
-| GitHub Copilot | Copy `AGENTS.md` into the project root; Copilot reads it as always-on instructions |
+| GitHub Copilot CLI | `/plugin marketplace add malwarebo/pragmatic-programmer`, then `/plugin install pragmatic-programmer@pragmatic-programmer` |
 | Other agents | Copy `AGENTS.md` into the project root |
 
 ## How it works

@@ -45,7 +45,7 @@ test('every skill has valid Agent Skills frontmatter', () => {
 });
 
 test('manifest versions agree', () => {
-  const versions = ['package.json', '.claude-plugin/plugin.json', '.codex-plugin/plugin.json']
+  const versions = ['package.json', '.claude-plugin/plugin.json', '.codex-plugin/plugin.json', '.github/plugin/plugin.json']
     .map((rel) => [rel, JSON.parse(read(rel)).version]);
   for (const [rel, version] of versions) assert.equal(version, versions[0][1], `${rel} version`);
 });

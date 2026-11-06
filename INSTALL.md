@@ -5,6 +5,7 @@
 | Claude Code | Plugin: both skills, hooks, mode on by default, subagents included | [Claude Code](#claude-code) |
 | Claude apps (claude.ai, Desktop) | Both skills, uploaded as ZIPs | [Claude apps](#claude-apps) |
 | Codex | Plugin: both skills and hooks | [Codex](#codex) |
+| GitHub Copilot CLI | Plugin: both skills and the session-start hook | [GitHub Copilot CLI](#github-copilot-cli) |
 | Cursor | Skills, plus an optional always-on rule | [Cursor](#cursor) |
 | ChatGPT | Both skills, uploaded as ZIPs | [ChatGPT](#chatgpt) |
 | Any other agent | Always-on rules file | [Other agents](#other-agents) |
@@ -52,6 +53,21 @@ codex plugin add pragmatic-programmer@pragmatic-programmer
 
 Run `codex`, open `/hooks`, review and trust the three hooks, then start a new thread. Turn the mode off with `$pragmatic-programmer off`.
 
+## GitHub Copilot CLI
+
+In a Copilot CLI session, send these as two separate prompts:
+
+```
+/plugin marketplace add malwarebo/pragmatic-programmer
+```
+```
+/plugin install pragmatic-programmer@pragmatic-programmer
+```
+
+From a shell, the same steps are `copilot plugin marketplace add malwarebo/pragmatic-programmer` and `copilot plugin install pragmatic-programmer@pragmatic-programmer`. Copilot namespaces plugin skills, so invoke them as `/pragmatic-programmer:pragmatic-programmer` and `/pragmatic-programmer:pragmatic-review`.
+
+The ruleset loads at session start. Copilot only accepts injected context at session start, so `/pragmatic-programmer off` takes effect from the next session; to stop it in the current one, tell the agent to stop applying the rules.
+
 ## Cursor
 
 From the root of the clone, link both skills:
@@ -79,11 +95,11 @@ To use it, type `@` in a chat and select the skill. ChatGPT has no hooks, so the
 
 ## Other agents
 
-Copy `AGENTS.md` into the project root. If the project already has an `AGENTS.md`, append this one to it. The rules then apply to every task in that project, and the on/off commands do not exist. Codex, Cursor, GitHub Copilot, and other agents that read `AGENTS.md` pick it up.
+Copy `AGENTS.md` into the project root. If the project already has an `AGENTS.md`, append this one to it. The rules then apply to every task in that project, and the on/off commands do not exist. Codex, Cursor, GitHub Copilot in VS Code and on github.com, and other agents that read `AGENTS.md` pick it up.
 
 ## Settings
 
-These apply where the hooks run (Claude Code and Codex). The first one that is set wins:
+These apply where the hooks run (Claude Code, Codex, and the GitHub Copilot CLI). The first one that is set wins:
 
 1. The environment variable `PRAGMATIC_PROGRAMMER_DEFAULT_MODE=on` or `off`.
 2. `defaultMode` in `~/.config/pragmatic-programmer/config.json` (`%APPDATA%\pragmatic-programmer\config.json` on Windows, `$XDG_CONFIG_HOME/pragmatic-programmer/config.json` when that variable is set). `/pragmatic-programmer default off` writes this file for you.
@@ -97,6 +113,7 @@ The live mode is stored per project in the plugin's data directory, so sessions 
 |---|---|
 | Claude Code | `/plugin uninstall pragmatic-programmer@pragmatic-programmer`, then `/plugin marketplace remove pragmatic-programmer` |
 | Codex | `codex plugin remove pragmatic-programmer@pragmatic-programmer`, then `codex plugin marketplace remove pragmatic-programmer` |
+| GitHub Copilot CLI | `/plugin uninstall pragmatic-programmer@pragmatic-programmer`, then `/plugin marketplace remove pragmatic-programmer` |
 | Cursor | `rm ~/.cursor/skills/pragmatic-programmer ~/.cursor/skills/pragmatic-review`, and delete any copied `.mdc` rule |
 | Claude apps, ChatGPT | Delete both skills from the Skills page |
 | Other agents | Delete the copied `AGENTS.md` text |

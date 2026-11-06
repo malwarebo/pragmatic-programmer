@@ -124,3 +124,16 @@ test('parseCommand recognizes every command form and nothing else', () => {
     assert.deepEqual(parseCommand(prompt), expected, `prompt: ${JSON.stringify(prompt)}`);
   }
 });
+
+test('Copilot gets top-level additionalContext on session start and nothing on prompts', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'pp-copilot-'));
+  const env = { PATH: process.env.PATH, HOME: root, COPILOT_PLUGIN_DATA: path.join(root, 'data'),
+    XDG_CONFIG_HOME: path.join(root, 'config') };
+  const run = (script, input) => spawnSync(process.execPath, [path.join(HOOKS, script)],
+    { env, input: JSON.stringify({ cwd: root, ...input }), encoding: 'utf8', timeout: 5000 });
+  const start = JSON.parse(run('activate.js', { source: 'startup' }).stdout);
+  assert.deepEqual(Object.keys(start), ['additionalContext']);
+  assert.ok(start.additionalContext.startsWith('PRAGMATIC PROGRAMMER MODE: ON'));
+  assert.equal(run('mode-tracker.js', { prompt: '/pragmatic-programmer off' }).stdout, '');
+  assert.equal(run('activate.js', { source: 'compact' }).stdout, '', 'off persists to the next start');
+});
