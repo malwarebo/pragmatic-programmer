@@ -13,6 +13,7 @@ Each tool installs differently. The `/plugin` commands work only in Claude Code.
 | Cursor | Link `skills/pragmatic-programmer` and `skills/pragmatic-review` into `~/.cursor/skills/`, or copy `.cursor/rules/pragmatic-programmer.mdc` into the project |
 | Claude apps | Upload the ZIPs from `npm run package` under Customize > Skills |
 | ChatGPT | Upload the ZIPs from `npm run package` under Plugins > Skills |
+| GitHub Copilot | Copy `AGENTS.md` into the project root; Copilot reads it as always-on instructions |
 | Other agents | Copy `AGENTS.md` into the project root |
 
 ## How it works
